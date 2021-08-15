@@ -1,0 +1,176 @@
+@font-face {
+  font-family: 'Sukhumvit Set';
+  src: url('/fonts/SukhumvitSet-Bold.woff2') format('woff2'),
+    url('/fonts/SukhumvitSet-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sukhumvit Set';
+  src: url('/fonts/SukhumvitSet-Medium.woff2') format('woff2'),
+    url('/fonts/SukhumvitSet-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sukhumvit Set';
+  src: url('/fonts/SukhumvitSet-Light.woff2') format('woff2'),
+    url('/fonts/SukhumvitSet-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sukhumvit Set';
+  src: url('/fonts/SukhumvitSet-Text.woff2') format('woff2'),
+    url('/fonts/SukhumvitSet-Text.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sukhumvit Set';
+  src: url('/fonts/SukhumvitSet-Thin.woff2') format('woff2'),
+    url('/fonts/SukhumvitSet-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sukhumvit Set';
+  src: url('/fonts/SukhumvitSet-SemiBold.woff2') format('woff2'),
+    url('/fonts/SukhumvitSet-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Sukhumvit Set' !important;
+  margin: 0;
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+.top-band {
+  display: flex;
+  align-items: center;
+  background-color: #41bfd0;
+  min-height: 45px;
+}
+.top-band a {
+  color: #f5f5f5;
+}
+.navbar-menu {
+  border-width: 1px 0px;
+  border-color: #d6d6d6;
+  border-style: solid;
+}
+.navbar-item.is-active,
+.navbar-link.is-active,
+a.navbar-item:hover,
+a.navbar-link:hover {
+  color: #60ceb0 !important;
+  border-bottom: solid 4px #60ceb0;
+}
+a.navbar-link:focus {
+  color: #4a4a4a;
+}
+.navbar-dropdown a.navbar-item.is-active,
+.navbar-dropdown a.navbar-item:hover {
+  color: #60ceb0 !important;
+  border: none;
+}
+.navbar-dropdown {
+  display: none;
+}
+.navbar-link:not(.is-arrowless)::after {
+  border-color: #60ceb0;
+}
+.footer a {
+  color: #4a4a4a;
+}
+.is-bigger {
+  color: #41bfd0;
+  border-width: 4px 0px;
+  border-color: grey;
+  border-style: solid;
+  width: 100%;
+}
+.p-1-c {
+  padding: 0.25rem;
+}
+.pb-2-c {
+  padding-bottom: 0.5rem;
+}
+.px-1-c {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+.ml-1-c {
+  margin-left: 0.25rem;
+}
+.blog-link,
+.blog-link:hover,
+.blog-link:active,
+.blog-link:visited,
+.blog-link:focus {
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.image-container {
+  width: 100%;
+  position: absolute;
+}
+.image-container > div {
+  position: unset !important;
+}
+.image-container .image {
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+}
+@media screen and (min-width: 1025px) {
+  .is-bigger {
+    font-size: 3.5rem !important;
+  }
+  .p-5-c-desktop {
+    padding: 1.5rem;
+  }
+  .px-6-c-desktop {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .py-3-c-desktop {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  .pb-4-c-desktop {
+    padding-bottom: 1rem;
+  }
+  .px-6-c-desktop {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .ml-2-c-desktop {
+    margin-left: 0.5rem;
+  }
+  .blog-link,
+  .blog-link:hover,
+  .blog-link:active,
+  .blog-link:visited,
+  .blog-link:focus {
+    width: 30%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
