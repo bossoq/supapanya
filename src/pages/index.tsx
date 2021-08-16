@@ -27,7 +27,7 @@ const Home = (): JSX.Element => {
         setIsLoading(false)
       }
     })
-  })
+  }, [])
 
   return (
     <div id="content" className="container pt-5 pb-5">

@@ -3,7 +3,7 @@ import Router from 'next/router'
 import useSWR from 'swr'
 
 const useUser = ({ redirectTo = '', redirectIfFound = false, preventRedirect = false } = {}) => {
-  const { data: user, mutate: mutateUser } = useSWR('/api/islogin')
+  const { data: user, mutate: mutateUser } = useSWR('/api/islogin', { refreshInterval: 60000 })
 
   useEffect(() => {
     let useRedirect: boolean = false
