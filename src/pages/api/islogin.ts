@@ -10,7 +10,8 @@ const islogin = (req: NextApiRequest, res: NextApiResponse<any>) => {
     setCookie(res, 'accesstoken', accessToken, {
       httpOnly: true,
       sameSite: 'lax',
-      maxAge: 86400,
+      path: '/',
+      maxAge: 86400000,
     })
     res.status(200).json({ isLoggedIn: true, ...decryptData })
   } catch (err: any) {
@@ -19,6 +20,7 @@ const islogin = (req: NextApiRequest, res: NextApiResponse<any>) => {
     setCookie(res, 'accesstoken', '', {
       httpOnly: true,
       sameSite: 'lax',
+      path: '/',
     })
     res.status(200).json({ isLoggedIn: false })
   }

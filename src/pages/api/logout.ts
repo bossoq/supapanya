@@ -5,6 +5,7 @@ const logout = (req: NextApiRequest, res: NextApiResponse<any>) => {
   setCookie(res, 'accesstoken', '', {
     httpOnly: true,
     sameSite: 'lax',
+    path: '/',
   })
 
   res.status(200).json({ success: true })
