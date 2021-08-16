@@ -91,12 +91,13 @@ const Navbar = (): JSX.Element => {
         role="navigation"
         aria-label="main navigation"
       >
-        <div className="navbar-brand">
+        <div className="navbar-brand has-background-grey-lighter">
           <a
-            className={`navbar-burger ${navBurgerActive ? 'is-active' : ''}`}
+            className={`navbar-burger has-background-grey-light ${navBurgerActive ? 'is-active' : ''}`}
             aria-label="menu"
             aria-expanded="false"
             data-target="main-navbar"
+            style={{ margin: 'auto' }}
             onClick={() => showHideNavBar()}
           >
             <span aria-hidden="true"></span>
