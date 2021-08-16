@@ -8,4 +8,5 @@ const VideoHTML = forwardRef(
   )
 )
 
+VideoHTML.displayName = 'VideoPlayer'
 export default VideoHTML

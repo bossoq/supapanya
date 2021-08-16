@@ -34,7 +34,7 @@ const BlogIndex = (): JSX.Element => {
         setHeight(offsetHeight)
       }
     })
-  }, [postMeta])
+  }, [postMeta, height])
 
   const dateGenerator = (date: Date): string => {
     const dateObj = new Date(date)

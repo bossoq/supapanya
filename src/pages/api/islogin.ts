@@ -2,7 +2,7 @@ import jwt from 'jwt-simple'
 import { secret } from '../../utils/auth'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default (req: NextApiRequest, res: NextApiResponse<any>) => {
+const islogin = (req: NextApiRequest, res: NextApiResponse<any>) => {
   const Cookies = require('cookies')
   const cookies = new Cookies(req, res)
   const accessToken: string = cookies.get('accesstoken')
@@ -15,3 +15,5 @@ export default (req: NextApiRequest, res: NextApiResponse<any>) => {
     res.status(200).json({ isLoggedIn: false })
   }
 }
+
+export default islogin

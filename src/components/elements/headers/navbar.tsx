@@ -142,7 +142,7 @@ const Navbar = (): JSX.Element => {
             </a>
           </Link>
           <div className="navbar-item has-dropdown is-hoverable" onMouseEnter={() => setShowDrop1(true)} onMouseLeave={() => setShowDrop1(false)}>
-            <Link href="#">
+            <Link href="#" passHref>
               <p
                 className={
                   router.pathname == '/review' || router.pathname == 'portfolio'
@@ -185,7 +185,7 @@ const Navbar = (): JSX.Element => {
             </div>
           </div>
           <div className="navbar-item has-dropdown is-hoverable" onMouseEnter={() => setShowDrop2(true)} onMouseLeave={() => setShowDrop2(false)}>
-            <Link href="#">
+            <Link href="#" passHref>
               <p
                 className={
                   RegExp('/blog').test(router.pathname) ||

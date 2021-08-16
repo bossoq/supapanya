@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import type { PostgrestResponse } from '@supabase/supabase-js'
 import type { PostResponse } from '../../types/Blog'
 
-export default async (req: NextApiRequest, res: NextApiResponse<PostResponse>) => {
+const getvideo = async (req: NextApiRequest, res: NextApiResponse<PostResponse>) => {
   if (req.body.videoType) {
     const { data, error }: PostgrestResponse<any> = await supabase.from('videoTable').select('*').eq('type', req.body.videoType)
     if (!error) {
@@ -20,3 +20,5 @@ export default async (req: NextApiRequest, res: NextApiResponse<PostResponse>) =
     }
   }
 }
+
+export default getvideo

@@ -5,7 +5,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Response, Credential } from '../../types/Auth'
 import type { PostgrestSingleResponse } from '@supabase/supabase-js';
 
-export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
+const login = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const userLoginFunction = async (credential: Credential): Promise<any> => {
     const { data }: PostgrestSingleResponse<any> = await supabase.from('userTable').select('*').eq('userLogin', credential.userLogin).single()
     let user: Response = {}
@@ -44,3 +44,5 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     res.status(200).json({ isLoggedIn: false })
   }
 }
+
+export default login

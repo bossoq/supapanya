@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-export default (req: NextApiRequest, res: NextApiResponse<any>) => {
+const logout = (req: NextApiRequest, res: NextApiResponse<any>) => {
   const Cookies = require('cookies')
   const cookies = new Cookies(req, res)
 
@@ -8,3 +8,5 @@ export default (req: NextApiRequest, res: NextApiResponse<any>) => {
 
   res.status(200).json({ success: true })
 }
+
+export default logout

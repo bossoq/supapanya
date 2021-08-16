@@ -86,7 +86,7 @@ const JitsiLive = () => {
         }
       }
     }
-  }, [userData, roomName, onCall])
+  }, [userData, roomName, onCall, moderator])
 
   const handleAPI = (JitsiMeetAPI: any) => {
     const iframeElem = document.getElementById('react-jitsi-frame')

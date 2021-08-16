@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Register, Response } from '../../types/Auth'
 import { PostgrestSingleResponse } from '@supabase/supabase-js'
 
-export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
+const register = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const userRegisterFunction = async (
     register: Register
   ): Promise<Response> => {
@@ -46,3 +46,5 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     res.status(200).json({ isRegistered: false })
   }
 }
+
+export default register

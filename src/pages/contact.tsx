@@ -62,7 +62,7 @@ const Contact = (): JSX.Element => {
               </span>
             </div>
             <div id="detail" className="mx-2" style={{ position: 'relative', width: '20vw', height: '20vh'}}>
-              <a href="https://goo.gl/maps/gdjEErdsk46xZTpBA" target="_blank">
+              <a href="https://goo.gl/maps/gdjEErdsk46xZTpBA" target="_blank" rel="noreferrer">
                 <Image src={'/images/googlemaps.jpg'} alt={'map'} layout={'fill'} objectFit={'contain'} />
               </a>
             </div>

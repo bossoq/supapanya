@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import type { PostgrestResponse, PostgrestSingleResponse } from '@supabase/supabase-js'
 import type { PostResponse } from '../../types/Blog'
 
-export default async (req: NextApiRequest, res: NextApiResponse<PostResponse>) => {
+const getpost = async (req: NextApiRequest, res: NextApiResponse<PostResponse>) => {
   if (req.body.postName) {
     const { data, error }: PostgrestSingleResponse<any> = await supabase.from('postTable').select('*').eq('postLink', req.body.postName).single()
     if (!error) {
@@ -20,3 +20,5 @@ export default async (req: NextApiRequest, res: NextApiResponse<PostResponse>) =
     }
   }
 }
+
+export default getpost
