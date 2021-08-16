@@ -17,7 +17,7 @@
     "@supabase/supabase-js": "^1.21.0",
     "bcryptjs": "^2.4.3",
     "bulma": "^0.9.3",
-    "cookies": "^0.8.0",
+    "cookie": "^0.4.1",
     "html-react-parser": "^1.2.8",
     "jwt-simple": "^0.5.6",
     "next": "11.0.1",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
-    "@types/cookies": "^0.7.7",
+    "@types/cookie": "^0.4.1",
     "@types/react": "17.0.16",
     "@types/video.js": "^7.3.26",
     "eslint": "7.32.0",

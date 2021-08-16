@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jwt-simple'
 import { supabase, secret } from '../../utils/auth'
+import { setCookie } from '../../utils/cookies'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Response, Credential } from '../../types/Auth'
 import type { PostgrestSingleResponse } from '@supabase/supabase-js';
@@ -33,11 +34,10 @@ const login = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const credential: Credential = req.body
   const { accessToken, user }: { accessToken: string, user:Response } = await userLoginFunction(credential)
   if (accessToken !== "") {
-    const Cookies = require('cookies')
-    const cookies = new Cookies(req, res)
-    cookies.set('accesstoken', accessToken, {
+    setCookie(res, 'accesstoken', accessToken, {
       httpOnly: true,
       sameSite: 'lax',
+      maxAge: 86400,
     })
     res.status(200).json({ isLoggedIn: true, ...user })
   } else {

@@ -1,14 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import { setCookie } from '../../utils/cookies'
 
 const logout = (req: NextApiRequest, res: NextApiResponse<any>) => {
-  const Cookies = require('cookies')
-  const cookies = new Cookies(req, res)
-
-  cookies.set('accesstoken', '', {
+  setCookie(res, 'accesstoken', '', {
     httpOnly: true,
     sameSite: 'lax',
   })
-  cookies.set('accesstoken', '')
 
   res.status(200).json({ success: true })
 }
