@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
+import Head from 'next/head'
 import Jitsi from 'react-jitsi'
 import useUser from '../utils/useUser'
 import fetchJson from '../utils/fetchJson'
@@ -156,6 +157,11 @@ const JitsiLive = () => {
   if (userData && userData.meta!.role !== 'Student') {
     return (!onCall ?
       (<>
+      <Head>
+        <title>ห้องเรียนออนไลน์ - สร้างห้องเรียน</title>
+        <meta property="og:title" content="ห้องเรียนออนไลน์ - สถาบันศุภปัญญาไอ.เค."
+        />
+      </Head>
       <section className="section">
         <div className="contaniner">
           <form className="box" onSubmit={startRoom}>
@@ -195,6 +201,11 @@ const JitsiLive = () => {
       :
       (
       <>
+        <Head>
+          <title>ห้องเรียนออนไลน์ - {roomName && roomName}</title>
+          <meta property="og:title" content="ห้องเรียนออนไลน์ - สถาบันศุภปัญญาไอ.เค."
+          />
+        </Head>
         <div style={{ width: '80vw', height: '80vh', margin: 'auto' }}>
           {jwt && <Jitsi
             containerStyle={{
@@ -223,10 +234,22 @@ const JitsiLive = () => {
     )
   } else {
     return (!onCall ?
-      <Roomname />
+      <>
+        <Head>
+          <title>ห้องเรียนออนไลน์ - เลือกห้องเรียน</title>
+          <meta property="og:title" content="ห้องเรียนออนไลน์ - สถาบันศุภปัญญาไอ.เค."
+          />
+        </Head>
+        <Roomname />
+      </>
       :
       (
         <>
+          <Head>
+            <title>ห้องเรียนออนไลน์ - {roomName && roomName}</title>
+            <meta property="og:title" content="ห้องเรียนออนไลน์ - สถาบันศุภปัญญาไอ.เค."
+            />
+          </Head>
           <div style={{ width: '80vw', height: '80vh', margin: 'auto' }}>
             {jwt && <Jitsi
               containerStyle={{

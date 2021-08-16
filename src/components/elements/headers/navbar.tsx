@@ -257,7 +257,7 @@ const Navbar = (): JSX.Element => {
               <Link href="/live" passHref>
                 <a
                   className={
-                    router.pathname == '/login'
+                    router.pathname == '/live'
                       ? 'navbar-item is-active'
                       : 'navbar-item'
                   }
@@ -266,10 +266,10 @@ const Navbar = (): JSX.Element => {
                   ห้องเรียนออนไลน์
                 </a>
               </Link>
-              <Link href="/live" passHref>
+              <Link href="/vod" passHref>
                 <a
                   className={
-                    router.pathname == '/login'
+                    router.pathname == '/vod'
                       ? 'navbar-item is-active'
                       : 'navbar-item'
                   }

@@ -111,7 +111,7 @@ const VideoJSElement = ({
       <div className="is-flex is-justify-content-center mb-5">
         <VideoJS options={videoJSOptions} />
       </div>
-      <div className="is-flex is-flex-direction-row is-justify-content-center">
+      <div className="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-center">
         {videoSourceLists.length > 1 && Object.values(videoSourceLists).map(({ id, poster, name }) => {
           return (
             <a key={id} href="#" onClick={() => handleSourceChange(id)}>
