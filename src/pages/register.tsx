@@ -60,7 +60,7 @@ const RegisterPage = (): JSX.Element => {
           setPassword('')
           setDisplayname('')
           setIsadmin(false)
-          setRole('')
+          setRole('Student')
           setLive(false)
           setTimeout(() => {
             setSuccess(false)
@@ -156,9 +156,6 @@ const RegisterPage = (): JSX.Element => {
                     <select
                       style={{ width: '100%' }}
                       value={role}
-                      onSubmit={(e) =>
-                        setRole((e.target as HTMLSelectElement).value)
-                      }
                       onChange={(e) =>
                         setRole((e.target as HTMLSelectElement).value)
                       }
