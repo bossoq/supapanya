@@ -6,7 +6,6 @@ const logout = (req: NextApiRequest, res: NextApiResponse<any>) => {
     httpOnly: true,
     sameSite: 'lax',
     path: '/',
-    maxAge: 0,
   })
 
   res.status(200).json({ isLoggedIn: false })
