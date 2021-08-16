@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
-import Jwt from 'jwt-simple'
 import Jitsi from 'react-jitsi'
 import useUser from '../utils/useUser'
 import fetchJson from '../utils/fetchJson'
-import { secret } from '../utils/auth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faVideo, faVideoSlash, faCommentAlt } from '@fortawesome/free-solid-svg-icons'
 import type { Response } from '../types/Auth';
@@ -82,7 +80,16 @@ const JitsiLive = () => {
             room: roomName,
             moderator: moderator,
           }
-          setJwt(Jwt.encode(data, secret))
+          fetchJson('/api/reqjwt', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ payload: data }),
+          }).then((response: { [k: string]: any }) => {
+            const { getToken, token } = response
+            if (getToken) {
+              setJwt(token)
+            }
+          })
         }
       }
     }
