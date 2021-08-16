@@ -7,7 +7,7 @@ import type { PostgrestSingleResponse } from '@supabase/supabase-js';
 
 const login = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const userLoginFunction = async (credential: Credential): Promise<any> => {
-    const { data }: PostgrestSingleResponse<any> = await supabase.from('userTable').select('*').eq('userLogin', credential.userLogin).single()
+    const { data }: PostgrestSingleResponse<any> = await supabase.from('userTable').select('*').eq('userLogin', credential.userLogin.toLowerCase()).single()
     let user: Response = {}
     let accessToken: string = ""
     if (data) {

@@ -11,7 +11,7 @@ const register = async (req: NextApiRequest, res: NextApiResponse<any>) => {
     let user: Response = {}
     const hash: string = await bcrypt.hash(register.userPassword, saltRounds)
     const request: Register = {
-      userLogin: register.userLogin,
+      userLogin: register.userLogin.toLowerCase(),
       userPassword: hash,
       displayName: register.displayName,
       meta: {
