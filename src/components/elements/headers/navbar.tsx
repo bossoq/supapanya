@@ -59,13 +59,11 @@ const Navbar = (): JSX.Element => {
   }
 
   // handle logout button
-  const handleLogout = async () => {
+  const handleLogout = () => {
     try {
-      mutateUser(
-        await fetchJson('/api/logout', {
-          method: 'GET',
-        })
-      )
+      fetchJson('/api/logout', {
+        method: 'GET',
+      }).then(res => mutateUser())
       setIsLogin(false)
       setIsAdmin(false)
       setPreventRedirect(false)
