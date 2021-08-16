@@ -9,7 +9,7 @@ const logout = (req: NextApiRequest, res: NextApiResponse<any>) => {
     maxAge: 0,
   })
 
-  res.status(200).json({ success: true })
+  res.status(200).json({ isLoggedIn: false })
 }
 
 export default logout

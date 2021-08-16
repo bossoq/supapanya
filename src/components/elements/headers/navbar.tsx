@@ -57,9 +57,6 @@ const Navbar = (): JSX.Element => {
       setNavBurgerActive(!navBurgerActive)
     }
   }
-  const showDropdown = () => {
-    setShowDrop1(!showDrop1)
-  }
 
   // handle logout button
   const handleLogout = async () => {

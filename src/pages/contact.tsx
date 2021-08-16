@@ -13,8 +13,8 @@ const Contact = (): JSX.Element => {
   return (
     <>
       <Head>
-        <title>รีวิว - สถาบันศุภปัญญาไอ.เค.</title>
-        <meta property="og:title" content="รีวิว - สถาบันศุภปัญญาไอ.เค." />
+        <title>ติดต่อเรา - สถาบันศุภปัญญาไอ.เค.</title>
+        <meta property="og:title" content="ติดต่อเรา - สถาบันศุภปัญญาไอ.เค." />
       </Head>
       <div className="container pt-5 pb-5">
         <div className="is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
