@@ -35,8 +35,6 @@ const login = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const { accessToken, user }: { accessToken: string, user:Response } = await userLoginFunction(credential)
   if (accessToken !== "") {
     setCookie(res, 'accesstoken', accessToken, {
-      httpOnly: true,
-      sameSite: 'lax',
       path: '/',
       maxAge: 86400000,
     })

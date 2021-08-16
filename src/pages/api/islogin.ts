@@ -18,8 +18,6 @@ const islogin = (req: NextApiRequest, res: NextApiResponse<any>) => {
     console.error('isLogin: ' + err.message)
 
     setCookie(res, 'accesstoken', '', {
-      httpOnly: true,
-      sameSite: 'lax',
       path: '/',
     })
     res.status(200).json({ isLoggedIn: false })

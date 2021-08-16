@@ -3,8 +3,6 @@ import { setCookie } from '../../utils/cookies'
 
 const logout = (req: NextApiRequest, res: NextApiResponse<any>) => {
   setCookie(res, 'accesstoken', 'invalid', {
-    httpOnly: true,
-    sameSite: 'lax',
     path: '/',
   })
 
