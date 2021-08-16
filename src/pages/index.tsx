@@ -33,7 +33,7 @@ const Home = (): JSX.Element => {
     <div id="content" className="container pt-5 pb-5">
       {showPopup && <div id="detail" className="image-container is-flex is-flex-direction-column has-background-white" style={{ zIndex: 999 }}>
         <button className="delete is-large" onClick={showPopups}></button>
-        <VideoJS videoList={[{ idx: 0, name: 'New Normal Supapanya', baseUrl: 'https://supapanya.com/vod/NewNormal_Promote-FullHD', type: 'homepage', allowAll: true }]} />
+        <VideoJS videoList={[{ idx: 0, name: 'New Normal Supapanya', baseUrl: 'https://vod.supapanya.com/NewNormal_Promote-FullHD', type: 'homepage', allowAll: true }]} />
       </div>}
       <div className="card">
         <div className="card-image">
@@ -74,7 +74,7 @@ const Home = (): JSX.Element => {
           <div className="column is-one-third-desktop is-full-mobile has-text-centered">
             <a onClick={showPopups}>
               <figure className="image" style={{ height: '25vh' }}>
-                <Image src={'https://supapanya.com/vod/NewNormal_Promote-FullHD/cover.jpg'} alt={'new normal supapanya'} layout={'fill'} objectFit={'contain'} />
+                <Image src={'https://vod.supapanya.com/NewNormal_Promote-FullHD/cover.jpg'} alt={'new normal supapanya'} layout={'fill'} objectFit={'contain'} />
               </figure>
               <p className="has-text-black">New Normal Supapanya</p>
             </a>
@@ -83,7 +83,7 @@ const Home = (): JSX.Element => {
             <Link href='/studytips' passHref>
               <a>
                 <figure className="image" style={{ height: '25vh' }}>
-                  <Image src={'https://supapanya.com/vod/Factorial-ForHLS+Dash/cover.jpg'} alt={'new normal supapanya'} layout={'fill'} objectFit={'contain'} />
+                  <Image src={'https://vod.supapanya.com/Factorial-ForHLS+Dash/cover.jpg'} alt={'new normal supapanya'} layout={'fill'} objectFit={'contain'} />
                 </figure>
                 <p className="has-text-black">เกร็ดความรู้</p>
               </a>
@@ -93,7 +93,7 @@ const Home = (): JSX.Element => {
             <Link href='/portfolio' passHref>
               <a>
                 <figure className="image" style={{ height: '25vh' }}>
-                  <Image src={'https://supapanya.com/vod/M4-20-HLSNew/cover.jpg'} alt={'new normal supapanya'} layout={'fill'} objectFit={'contain'} />
+                  <Image src={'https://vod.supapanya.com/M4-20-HLSNew/cover.jpg'} alt={'new normal supapanya'} layout={'fill'} objectFit={'contain'} />
                 </figure>
                 <p className="has-text-black">ความสำเร็จของเรา</p>
               </a>
