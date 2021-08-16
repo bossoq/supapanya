@@ -1,6 +1,5 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jwt-simple'
-import Cookies from 'js-cookie'
 import { supabase, secret } from '../../utils/auth'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Response, Credential } from '../../types/Auth'
@@ -34,14 +33,11 @@ const login = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const credential: Credential = req.body
   const { accessToken, user }: { accessToken: string, user:Response } = await userLoginFunction(credential)
   if (accessToken !== "") {
-    // const Cookies = require('cookies')
-    // const cookies = new Cookies(req, res)
-    // cookies.set('accesstoken', accessToken, {
-    //   httpOnly: true,
-    //   sameSite: 'lax',
-    // })
-    Cookies.set('accesstoken', accessToken, {
-      secure: true,
+    const Cookies = require('cookies')
+    const cookies = new Cookies(req, res)
+    cookies.set('accesstoken', accessToken, {
+      httpOnly: true,
+      sameSite: 'lax',
     })
     res.status(200).json({ isLoggedIn: true, ...user })
   } else {
