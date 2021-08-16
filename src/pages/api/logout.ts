@@ -4,7 +4,10 @@ const logout = (req: NextApiRequest, res: NextApiResponse<any>) => {
   const Cookies = require('cookies')
   const cookies = new Cookies(req, res)
 
-  cookies.set('accesstoken')
+  cookies.set('accesstoken', '', {
+    httpOnly: true,
+    sameSite: 'lax',
+  })
 
   res.status(200).json({ success: true })
 }
