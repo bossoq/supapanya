@@ -2,17 +2,32 @@ import '../styles/globals.css'
 import 'bulma/css/bulma.min.css'
 import { useEffect } from 'react'
 import { SWRConfig } from 'swr'
-import TagManager from 'react-gtm-module'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import fetch from '../utils/fetchJson'
 import { Header, Footer } from '../components/elements'
+import * as ga from '../utils/galib'
 import type { AppProps } from 'next/app'
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
+  const router = useRouter()
+
   useEffect(() => {
-    TagManager.initialize({ gtmId: 'G-2VT2F5VNMY' })
     document.querySelector('body')?.classList.add('has-navbar-fixed-bottom')
   }, [])
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      ga.pageview(url)
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+
   return (
     <SWRConfig
       value={{
@@ -117,6 +132,22 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
             content="/favicon/ms-icon-144x144.png"
           />
           <meta name="theme-color" content="#ffffff" />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+          />
         </Head>
         <Header />
         <div className="mb-6 p-1">
