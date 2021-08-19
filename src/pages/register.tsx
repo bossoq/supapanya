@@ -50,7 +50,6 @@ const RegisterPage = (): JSX.Element => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(register),
       })
-      console.log(registerData)
       if (registerData) {
         const { isRegistered, ...userData } = registerData
         if (isRegistered) {

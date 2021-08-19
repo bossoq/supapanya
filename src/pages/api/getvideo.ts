@@ -5,7 +5,6 @@ import type { PostResponse } from '../../types/Blog'
 
 const getvideo = async (req: NextApiRequest, res: NextApiResponse<PostResponse>) => {
   if (req.body.userId) {
-    console.log('1')
     const { data, error }: PostgrestResponse<any> = await supabase.from('videoTable').select('*').eq('type', req.body.videoType).contains('allowList::text', req.body.userId)
     if (!error) {
       res.status(200).json({ complete: true, ...data})
