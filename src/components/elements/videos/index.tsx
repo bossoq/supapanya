@@ -75,17 +75,9 @@ const VideoJSElement = ({
   }
 
   const videoSourceLists: { [k: string]: any } = videoList.map(
-    ({ id, name, baseUrl, allowAll, allowList }: VideoList) => {
-      if (allowAll) {
-        const meta = generateMeta(id, name, baseUrl)
-        return meta
-      } else if (allowList) {
-        if (userId in allowList) {
-          const meta = generateMeta(id, name, baseUrl)
-          return meta
-        }
-      }
-      return []
+    ({ id, name, baseUrl }: VideoList) => {
+      const meta = generateMeta(id, name, baseUrl)
+      return meta
     }
   )
 

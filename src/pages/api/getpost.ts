@@ -9,6 +9,7 @@ const getpost = async (req: NextApiRequest, res: NextApiResponse<PostResponse>) 
     if (!error) {
       res.status(200).json({ complete: true, ...data})
     } else {
+      console.error(error)
       res.status(200).json({ complete: false })
     }
   } else {
@@ -16,6 +17,7 @@ const getpost = async (req: NextApiRequest, res: NextApiResponse<PostResponse>) 
     if (!error) {
       res.status(200).json({ complete: true, ...data })
     } else {
+      console.error(error)
       res.status(200).json({ complete: false })
     }
   }

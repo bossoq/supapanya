@@ -17,22 +17,24 @@ const Portfolio = (): JSX.Element => {
   })
 
   useEffect(() => {
-    fetchJson('/api/getvideo', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ videoType: 'vod' }),
-    }).then((response: { [k: string]: any }) => {
-      const { complete, ...data } = response
-      const list: VideoList[] = []
-      if (complete) {
-        Object.values(data).map((meta: VideoList) => {
-          list.push(meta)
-        })
-        setVideoList(list)
-        setIsLoading(false)
-      }
-    })
-  }, [])
+    if (user) {
+      fetchJson('/api/getvideo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ videoType: 'vod', userId: user.id }),
+      }).then((response: { [k: string]: any }) => {
+        const { complete, ...data } = response
+        const list: VideoList[] = []
+        if (complete) {
+          Object.values(data).map((meta: VideoList) => {
+            list.push(meta)
+          })
+          setVideoList(list)
+          setIsLoading(false)
+        }
+      })
+    }
+  }, [user])
   return (
     <>
       <Head>
