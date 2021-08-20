@@ -67,6 +67,7 @@ const Navbar = (): JSX.Element => {
       setIsLogin(false)
       setIsAdmin(false)
       setPreventRedirect(false)
+      router.push('/')
     } catch (err: any) {
       console.error('Request Failed: ' + err.data.message)
     }
