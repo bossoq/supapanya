@@ -88,9 +88,10 @@ const VideoJSElement = ({
   }, [userId])
 
   const handleSourceChange = (id: number) => {
+    const videoSource: { id: number, name: string, baseUrl: string } = Object.values(videoSourceLists).filter(i => i.id === id)[0]
     const prepOptions = {
       ...videoJSOptionsDefault,
-      ...videoSourceLists[id - 1],
+      ...videoSource,
     }
     if (idDef !== id) {
       setidDef(id)
