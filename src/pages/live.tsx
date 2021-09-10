@@ -105,6 +105,7 @@ const JitsiLive = () => {
       JitsiMeetAPI.addEventListener('videoConferenceJoined', () => {
         setTimeout(() => {
           JitsiMeetAPI.executeCommand('toggleLobby', true)
+          JitsiMeetAPI.executeCommand('password', roomPassword)
           JitsiMeetAPI.executeCommand('setFollowMe', true)
           JitsiMeetAPI.pinParticipant(JitsiMeetAPI.getParticipantsInfo()[0].participantId)
         }, 500)
