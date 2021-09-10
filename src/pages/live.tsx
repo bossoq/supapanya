@@ -17,7 +17,7 @@ const JitsiLive = () => {
   const [onCall, setOnCall] = useState<boolean>(false)
   const [roomNames, setRoomNames] = useState<string[]>([])
   const [roomName, setRoomName] = useState<string>()
-  const roomPassword = process.env.MEET_PASSWORD
+  // const roomPassword = process.env.MEET_PASSWORD
 
   const { user } = useUser({
     redirectTo: '/login',
@@ -79,7 +79,7 @@ const JitsiLive = () => {
             nbf: Math.floor(new Date().getTime() / 1000),
             exp: Math.floor((new Date().getTime() + 2 * 60 * 1000) / 1000),
             sub: 'meet.jitsi',
-            room: moderator ? '*' : roomName,
+            room: '*',
             moderator: moderator,
           }
           fetchJson('/api/reqjwt', {
@@ -105,7 +105,7 @@ const JitsiLive = () => {
       JitsiMeetAPI.addEventListener('videoConferenceJoined', () => {
         setTimeout(() => {
           JitsiMeetAPI.executeCommand('toggleLobby', true)
-          JitsiMeetAPI.executeCommand('password', roomPassword)
+          // JitsiMeetAPI.executeCommand('password', roomPassword)
           JitsiMeetAPI.executeCommand('setFollowMe', true)
           JitsiMeetAPI.pinParticipant(JitsiMeetAPI.getParticipantsInfo()[0].participantId)
         }, 500)
@@ -218,7 +218,6 @@ const JitsiLive = () => {
             domain={'meet.supapanya.com'}
             roomName={roomName}
             displayName={userData!.displayName}
-            password={roomPassword}
             config={{
               startWithAudioMuted: false,
               disableDeepLinking: false,
