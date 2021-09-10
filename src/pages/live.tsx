@@ -17,6 +17,7 @@ const JitsiLive = () => {
   const [onCall, setOnCall] = useState<boolean>(false)
   const [roomNames, setRoomNames] = useState<string[]>([])
   const [roomName, setRoomName] = useState<string>()
+  const roomPassword = process.env.MEET_PASSWORD
 
   const { user } = useUser({
     redirectTo: '/login',
@@ -78,7 +79,7 @@ const JitsiLive = () => {
             nbf: Math.floor(new Date().getTime() / 1000),
             exp: Math.floor((new Date().getTime() + 2 * 60 * 1000) / 1000),
             sub: 'meet.jitsi',
-            room: roomName,
+            room: moderator ? '*' : roomName,
             moderator: moderator,
           }
           fetchJson('/api/reqjwt', {
@@ -216,6 +217,7 @@ const JitsiLive = () => {
             domain={'meet.supapanya.com'}
             roomName={roomName}
             displayName={userData!.displayName}
+            password={roomPassword}
             config={{
               startWithAudioMuted: false,
               disableDeepLinking: false,
