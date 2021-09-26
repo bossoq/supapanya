@@ -30,7 +30,7 @@ const Table = ({
               } else if (key === 'allowAll') {
                 return (
                   <td key={idx}>
-                    <input type="checkbox" checked={value} disabled />
+                    <input type="checkbox" checked={Boolean(value)} disabled />
                   </td>
                 )
               } else if (key === 'allowList') {

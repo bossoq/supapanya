@@ -37,7 +37,7 @@ const VodEdit: React.FC<DataProps> = (props): JSX.Element => {
   const [name, setName] = useState<string>('')
   const [baseUrl, setBaseUrl] = useState<string>('')
   const [type, setType] = useState<string>('vod')
-  const [allowAll, setAllowAll] = useState<boolean>(true)
+  const [allowAll, setAllowAll] = useState<boolean>(false)
   const [allowList, setAllowList] = useState<number[]>([])
   const [allowListWithName, setAllowListWithName] = useState<Options[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -84,29 +84,32 @@ const VodEdit: React.FC<DataProps> = (props): JSX.Element => {
   }, [])
 
   useEffect(() => {
-    if (props.data?.id) {
+    if (props.data && props.data.id) {
       setIsLoading(true)
       setId(props.data.id)
       setName(props.data.name)
       setBaseUrl(props.data.baseUrl)
       setType(props.data.type)
-      setAllowAll(props.data.allowAll)
+      setAllowAll(Boolean(props.data.allowAll))
       setAllowList(props.data.allowList)
       const listWithName = idToList(props.data.allowList, allUser)
       setAllowListWithName(listWithName)
       setIsLoading(false)
-    } else {
+    } else if (allUser.length > 0) {
       setIsLoading(false)
     }
   }, [props.data, allUser])
 
-  const idToList = (ids: number[], allUser: Options[]): Options[] => {
+  const idToList = (ids: number[] | string, allUser: Options[]): Options[] => {
     const userInfos: Options[] = []
-    if (ids && ids.length > 0 && allUser.length > 0) {
+    if (typeof ids == 'object' && ids && ids.length > 1 && allUser.length > 0) {
       ids.map((id) => {
-        const user: Options = allUser.find((user) => user.value === id)!
+        const user: Options = allUser.find((user) => user.value == id)!
         userInfos.push(user)
       })
+    } else if (typeof ids == 'string' && ids && allUser.length > 0) {
+      const user: Options = allUser.find((user) => user.value == parseInt(ids))!
+      userInfos.push(user)
     }
     return userInfos
   }
