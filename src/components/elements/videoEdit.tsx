@@ -40,7 +40,7 @@ const VodEdit: React.FC<DataProps> = (props): JSX.Element => {
   const [allowAll, setAllowAll] = useState<boolean>(false)
   const [allowList, setAllowList] = useState<number[]>([])
   const [allowListWithName, setAllowListWithName] = useState<Options[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const [videoData, setVideoData] = useState<VideoData | null>()
   const [success, setSuccess] = useState<boolean>(false)
@@ -84,7 +84,7 @@ const VodEdit: React.FC<DataProps> = (props): JSX.Element => {
   }, [])
 
   useEffect(() => {
-    if (props.data) {
+    if (props.data?.id) {
       setIsLoading(true)
       setId(props.data.id)
       setName(props.data.name)
