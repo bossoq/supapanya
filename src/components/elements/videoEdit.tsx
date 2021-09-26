@@ -37,7 +37,7 @@ const VodEdit: React.FC<DataProps> = (props): JSX.Element => {
   const [name, setName] = useState<string>('')
   const [baseUrl, setBaseUrl] = useState<string>('')
   const [type, setType] = useState<string>('vod')
-  const [allowAll, setAllowAll] = useState<boolean>(false)
+  const [allowAll, setAllowAll] = useState<boolean>(true)
   const [allowList, setAllowList] = useState<number[]>([])
   const [allowListWithName, setAllowListWithName] = useState<Options[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -94,6 +94,8 @@ const VodEdit: React.FC<DataProps> = (props): JSX.Element => {
       setAllowList(props.data.allowList)
       const listWithName = idToList(props.data.allowList, allUser)
       setAllowListWithName(listWithName)
+      setIsLoading(false)
+    } else {
       setIsLoading(false)
     }
   }, [props.data, allUser])
