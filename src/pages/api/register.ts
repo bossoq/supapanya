@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs'
 import { supabase, saltRounds } from '../../utils/auth'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Register, Response } from '../../types/Auth'
-import { PostgrestSingleResponse } from '@supabase/supabase-js'
+import type { PostgrestSingleResponse } from '@supabase/supabase-js'
 
 const register = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const userRegisterFunction = async (

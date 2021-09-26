@@ -14,6 +14,7 @@ const Navbar = (): JSX.Element => {
   const [navBurgerActive, setNavBurgerActive] = useState<boolean>(false)
   const [showDrop1, setShowDrop1] = useState<boolean>(false)
   const [showDrop2, setShowDrop2] = useState<boolean>(false)
+  const [showDrop3, setShowDrop3] = useState<boolean>(false)
   const router = useRouter()
 
   const { user } = useUser()
@@ -52,7 +53,6 @@ const Navbar = (): JSX.Element => {
   const showHideNavBar = (force = false) => {
     if (force) {
       setNavBurgerActive(false)
-      setShowDrop1(false)
     } else {
       setNavBurgerActive(!navBurgerActive)
     }
@@ -63,7 +63,7 @@ const Navbar = (): JSX.Element => {
     try {
       fetchJson('/api/logout', {
         method: 'GET',
-      }).then(res => mutateUser())
+      }).then((res) => mutateUser())
       setIsLogin(false)
       setIsAdmin(false)
       setPreventRedirect(false)
@@ -89,7 +89,9 @@ const Navbar = (): JSX.Element => {
       >
         <div className="navbar-brand has-background-grey-lighter">
           <a
-            className={`navbar-burger has-background-grey-light ${navBurgerActive ? 'is-active' : ''}`}
+            className={`navbar-burger has-background-grey-light ${
+              navBurgerActive ? 'is-active' : ''
+            }`}
             aria-label="menu"
             aria-expanded="false"
             data-target="main-navbar"
@@ -138,7 +140,11 @@ const Navbar = (): JSX.Element => {
               คอร์สเรียน
             </a>
           </Link>
-          <div className="navbar-item has-dropdown is-hoverable" onMouseEnter={() => setShowDrop1(true)} onMouseLeave={() => setShowDrop1(false)}>
+          <div
+            className="navbar-item has-dropdown is-hoverable"
+            onMouseEnter={() => setShowDrop1(true)}
+            onMouseLeave={() => setShowDrop1(false)}
+          >
             <Link href="#" passHref>
               <p
                 className={
@@ -181,7 +187,11 @@ const Navbar = (): JSX.Element => {
               </Link>
             </div>
           </div>
-          <div className="navbar-item has-dropdown is-hoverable" onMouseEnter={() => setShowDrop2(true)} onMouseLeave={() => setShowDrop2(false)}>
+          <div
+            className="navbar-item has-dropdown is-hoverable"
+            onMouseEnter={() => setShowDrop2(true)}
+            onMouseLeave={() => setShowDrop2(false)}
+          >
             <Link href="#" passHref>
               <p
                 className={
@@ -289,18 +299,66 @@ const Navbar = (): JSX.Element => {
             </>
           )}
           {isAdmin && (
-            <Link href="/register" passHref>
-              <a
-                className={
-                  router.pathname == '/register'
-                    ? 'navbar-item is-active'
-                    : 'navbar-item'
-                }
-                onClick={() => showHideNavBar(true)}
+            <div
+              className="navbar-item has-dropdown is-hoverable"
+              onMouseEnter={() => setShowDrop3(true)}
+              onMouseLeave={() => setShowDrop3(false)}
+            >
+              <Link href="#" passHref>
+                <p
+                  className={
+                    router.pathname == '/register' ||
+                    router.pathname == '/vodlist' ||
+                    router.pathname == '/vodedit'
+                      ? 'navbar-link is-active'
+                      : 'navbar-link'
+                  }
+                >
+                  สำหรับผู้ดูแลระบบ
+                </p>
+              </Link>
+              <div
+                className="navbar-dropdown"
+                style={showDrop3 ? { display: 'block' } : { display: 'none' }}
               >
-                ลงทะเบียน
-              </a>
-            </Link>
+                <Link href="/register" passHref>
+                  <a
+                    className={
+                      router.pathname == '/register'
+                        ? 'navbar-item is-active'
+                        : 'navbar-item'
+                    }
+                    onClick={() => showHideNavBar(true)}
+                  >
+                    ลงทะเบียน
+                  </a>
+                </Link>
+                <Link href="/vodlist" passHref>
+                  <a
+                    className={
+                      router.pathname == '/vodlist'
+                        ? 'navbar-item is-active'
+                        : 'navbar-item'
+                    }
+                    onClick={() => showHideNavBar(true)}
+                  >
+                    รายชื่อ VIDEO
+                  </a>
+                </Link>
+                <Link href="/vodedit" passHref>
+                  <a
+                    className={
+                      router.pathname == '/vodedit'
+                        ? 'navbar-item is-active'
+                        : 'navbar-item'
+                    }
+                    onClick={() => showHideNavBar(true)}
+                  >
+                    เพิ่มวิดีโอ
+                  </a>
+                </Link>
+              </div>
+            </div>
           )}
         </div>
       </nav>

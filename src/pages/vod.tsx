@@ -7,7 +7,7 @@ import useUser from '../utils/useUser'
 import fetchJson from '../utils/fetchJson'
 import type { VideoList } from '../types/VideoJS'
 
-const Portfolio = (): JSX.Element => {
+const Vod = (): JSX.Element => {
   const [videoList, setVideoList] = useState<VideoList[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
@@ -50,4 +50,4 @@ const Portfolio = (): JSX.Element => {
   )
 }
 
-export default Portfolio
+export default Vod

@@ -71,13 +71,17 @@ const RegisterPage = (): JSX.Element => {
   }
 
   const handleNotification = () => {
+    setRegisData({})
     setSuccess(false)
   }
   return (
     <>
       <Head>
         <title>Register - Admin Panel - สถาบันศุภปัญญาไอ.เค.</title>
-        <meta property="og:title" content="Register - Admin Panel - สถาบันศุภปัญญาไอ.เค." />
+        <meta
+          property="og:title"
+          content="Register - Admin Panel - สถาบันศุภปัญญาไอ.เค."
+        />
       </Head>
       <section className="section">
         <div className="container">
