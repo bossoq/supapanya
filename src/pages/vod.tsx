@@ -13,7 +13,7 @@ const Vod = (): JSX.Element => {
 
   const { user } = useUser({
     redirectTo: '/login',
-    redirectIfFound: false
+    redirectIfFound: false,
   })
 
   useEffect(() => {
@@ -39,11 +39,15 @@ const Vod = (): JSX.Element => {
     <>
       <Head>
         <title>บันทึกการสอนออนไลน์สำหรับ {user && user.displayName}</title>
-        <meta property="og:title" content="บันทึกการสอนออนไลน์ - สถาบันศุภปัญญาไอ.เค."
+        <meta
+          property="og:title"
+          content="บันทึกการสอนออนไลน์ - สถาบันศุภปัญญาไอ.เค."
         />
       </Head>
       <div id="content" className="container pt-5 pb-5">
-        <h1 className="is-size-1 has-text-weight-bold">บันทึกการสอนออนไลน์สำหรับ {user && user.displayName}</h1>
+        <h1 className="is-size-1 has-text-weight-bold">
+          บันทึกการสอนออนไลน์สำหรับ {user && user.displayName}
+        </h1>
         {!isLoading && <VideoJS videoList={videoList} />}
       </div>
     </>

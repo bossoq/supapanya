@@ -19,6 +19,7 @@ export interface VideoList {
   type: string
   allowAll: boolean
   allowList?: number[]
+  fileType: string
 }
 
 export const videoJSOptionsDefault: VideoOptions = {
