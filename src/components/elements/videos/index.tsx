@@ -118,7 +118,6 @@ const VideoJSElement = ({
     const videoSource: Record<string, any> = Object.values(
       videoSourceLists
     ).filter((i) => i.id === id)[0]
-    console.log(videoSource)
     if (idDef !== id) {
       if (videoSource.fileType === 'MP4') {
         const prepOptions = {
