@@ -31,10 +31,27 @@ const Home = (): JSX.Element => {
 
   return (
     <div id="content" className="container pt-5 pb-5">
-      {showPopup && <div id="detail" className="image-container is-flex is-flex-direction-column has-background-white" style={{ zIndex: 999 }}>
-        <button className="delete is-large" onClick={showPopups}></button>
-        <VideoJS videoList={[{ idx: 0, name: 'New Normal Supapanya', baseUrl: 'https://vod.supapanya.com/NewNormal_Promote-FullHD', type: 'homepage', allowAll: true }]} />
-      </div>}
+      {showPopup && (
+        <div
+          id="detail"
+          className="image-container is-flex is-flex-direction-column has-background-white"
+          style={{ zIndex: 999 }}
+        >
+          <button className="delete is-large" onClick={showPopups}></button>
+          <VideoJS
+            videoList={[
+              {
+                idx: 0,
+                name: 'New Normal Supapanya',
+                baseUrl: 'https://vod.supapanya.com/NewNormal_Promote-FullHD',
+                type: 'homepage',
+                allowAll: true,
+                fileType: 'MP4',
+              },
+            ]}
+          />
+        </div>
+      )}
       <div className="card">
         <div className="card-image">
           <figure
@@ -69,31 +86,52 @@ const Home = (): JSX.Element => {
         </div>
       </div>
       <div className="is-flex is-flex-direction-column py-4">
-        <h2 className="is-size-3 is-size-4-mobile has-text-weight-bold">วิดีโอที่น่าสนใจ</h2>
+        <h2 className="is-size-3 is-size-4-mobile has-text-weight-bold">
+          วิดีโอที่น่าสนใจ
+        </h2>
         <div className="columns">
           <div className="column is-one-third-desktop is-full-mobile has-text-centered">
             <a onClick={showPopups}>
               <figure className="image" style={{ height: '25vh' }}>
-                <Image src={'https://vod.supapanya.com/NewNormal_Promote-FullHD/cover.jpg'} alt={'new normal supapanya'} layout={'fill'} objectFit={'contain'} />
+                <Image
+                  src={
+                    'https://vod.supapanya.com/NewNormal_Promote-FullHD/cover.jpg'
+                  }
+                  alt={'new normal supapanya'}
+                  layout={'fill'}
+                  objectFit={'contain'}
+                />
               </figure>
               <p className="has-text-black">New Normal Supapanya</p>
             </a>
           </div>
           <div className="column is-one-third-desktop is-full-mobile has-text-centered">
-            <Link href='/studytips' passHref>
+            <Link href="/studytips" passHref>
               <a>
                 <figure className="image" style={{ height: '25vh' }}>
-                  <Image src={'https://vod.supapanya.com/Factorial-ForHLS+Dash/cover.jpg'} alt={'new normal supapanya'} layout={'fill'} objectFit={'contain'} />
+                  <Image
+                    src={
+                      'https://vod.supapanya.com/Factorial-ForHLS+Dash/cover.jpg'
+                    }
+                    alt={'new normal supapanya'}
+                    layout={'fill'}
+                    objectFit={'contain'}
+                  />
                 </figure>
                 <p className="has-text-black">เกร็ดความรู้</p>
               </a>
             </Link>
           </div>
           <div className="column is-one-third-desktop is-full-mobile has-text-centered">
-            <Link href='/portfolio' passHref>
+            <Link href="/portfolio" passHref>
               <a>
                 <figure className="image" style={{ height: '25vh' }}>
-                  <Image src={'https://vod.supapanya.com/M4-20-HLSNew/cover.jpg'} alt={'new normal supapanya'} layout={'fill'} objectFit={'contain'} />
+                  <Image
+                    src={'https://vod.supapanya.com/M4-20-HLSNew/cover.jpg'}
+                    alt={'new normal supapanya'}
+                    layout={'fill'}
+                    objectFit={'contain'}
+                  />
                 </figure>
                 <p className="has-text-black">ความสำเร็จของเรา</p>
               </a>
@@ -102,22 +140,47 @@ const Home = (): JSX.Element => {
         </div>
       </div>
       <div className="is-flex is-flex-direction-column py-4">
-        <h2 className="is-size-3 is-size-4-mobile has-text-weight-bold">บทความล่าสุด</h2>
+        <h2 className="is-size-3 is-size-4-mobile has-text-weight-bold">
+          บทความล่าสุด
+        </h2>
         <div className="columns">
-          {!isLoading && postMeta.reverse().slice(0,3).map(({ postTitle, postLink, postPicture, id }) => {
-            return (
-              <div key={`div_${id}`} className="column is-one-third-desktop is-full-mobile has-text-centered">
-                <Link key={`link_${id}`} href={`/blog/${postLink}`} passHref>
-                  <a key={`a_${id}`}>
-                    <figure key={`fig_${id}`} className="image" style={{ height: '25vh' }}>
-                      <Image key={`img_${id}`} src={postPicture || ''} alt={'new normal supapanya'} layout={'fill'} objectFit={'contain'} />
-                    </figure>
-                    <p key={`p_${id}`} className="has-text-black">{postTitle}</p>
-                  </a>
-                </Link>
-              </div>
-            )
-          })}
+          {!isLoading &&
+            postMeta
+              .reverse()
+              .slice(0, 3)
+              .map(({ postTitle, postLink, postPicture, id }) => {
+                return (
+                  <div
+                    key={`div_${id}`}
+                    className="column is-one-third-desktop is-full-mobile has-text-centered"
+                  >
+                    <Link
+                      key={`link_${id}`}
+                      href={`/blog/${postLink}`}
+                      passHref
+                    >
+                      <a key={`a_${id}`}>
+                        <figure
+                          key={`fig_${id}`}
+                          className="image"
+                          style={{ height: '25vh' }}
+                        >
+                          <Image
+                            key={`img_${id}`}
+                            src={postPicture || ''}
+                            alt={'new normal supapanya'}
+                            layout={'fill'}
+                            objectFit={'contain'}
+                          />
+                        </figure>
+                        <p key={`p_${id}`} className="has-text-black">
+                          {postTitle}
+                        </p>
+                      </a>
+                    </Link>
+                  </div>
+                )
+              })}
         </div>
       </div>
     </div>
