@@ -10,7 +10,11 @@ const Login = (): JSX.Element => {
   const [userPassword, setPassword] = useState<string>('')
   const [invalid, setInvalid] = useState<boolean>(false)
 
-  const { user, mutateUser } = useUser()
+  const { user, mutateUser } = useUser({
+    redirectTo: '',
+    redirectIfFound: false,
+    preventRedirect: true,
+  })
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
