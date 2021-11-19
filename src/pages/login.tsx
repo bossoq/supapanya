@@ -12,7 +12,6 @@ const Login = (): JSX.Element => {
 
   const { user, mutateUser } = useUser({
     redirectTo: '/',
-    redirectIfFound: true,
   })
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
