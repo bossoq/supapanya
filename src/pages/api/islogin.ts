@@ -8,8 +8,6 @@ const islogin = (req: NextApiRequest, res: NextApiResponse<any>) => {
   try {
     const decryptData = jwt.decode(accessToken, secret)
     setCookie(res, 'accesstoken', accessToken, {
-      httpOnly: true,
-      sameSite: 'lax',
       path: '/',
       maxAge: 86400000,
     })
