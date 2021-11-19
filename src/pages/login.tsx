@@ -27,7 +27,7 @@ const Login = (): JSX.Element => {
       )
       if (typeof window !== 'undefined') {
         window.localStorage.setItem('accesstoken', user.accessToken)
-        if (window.localStorage.getItem('accesstoken') !== null) {
+        if (window.localStorage.getItem('accesstoken') === user.accessToken) {
           window.location.replace('/')
         }
       }
