@@ -8,18 +8,28 @@ const useUser = ({
   redirectIfFound = false,
   preventRedirect = false,
 } = {}) => {
+  let token = ''
   const fetcher = (url: string, token: string) =>
     axios
       .get(url, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => res.data)
 
+  if (typeof window !== 'undefined') {
+    token = window.localStorage.getItem('accesstoken') || ''
+  }
+
   const { data: user, mutate: mutateUser } = useSWR(
-    ['/api/islogin?_vercel_no_cache=1', 'dummytoken'],
+    ['/api/islogin?_vercel_no_cache=1', token],
     fetcher,
     { refreshInterval: 10000 }
   )
 
   useEffect(() => {
+    if (user && user.accessToken) {
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('accesstoken', user.accessToken)
+      }
+    }
     let useRedirect: boolean = false
     if (redirectTo !== '') {
       useRedirect = true

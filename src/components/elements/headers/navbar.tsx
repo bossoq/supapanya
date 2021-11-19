@@ -1,5 +1,5 @@
 // eslint-disable-next-line react-hooks/exhaustive-deps
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
@@ -67,6 +67,9 @@ const Navbar = (): JSX.Element => {
       setIsLogin(false)
       setIsAdmin(false)
       setPreventRedirect(false)
+      if (typeof window !== 'undefined') {
+        window.localStorage.removeItem('accesstoken')
+      }
       router.push('/')
     } catch (err: any) {
       console.error('Request Failed: ' + err.data.message)

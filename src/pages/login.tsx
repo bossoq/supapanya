@@ -10,7 +10,7 @@ const Login = (): JSX.Element => {
   const [userPassword, setPassword] = useState<string>('')
   const [invalid, setInvalid] = useState<boolean>(false)
 
-  const { mutateUser } = useUser({
+  const { user, mutateUser } = useUser({
     redirectTo: '/',
     redirectIfFound: true,
   })
@@ -25,6 +25,10 @@ const Login = (): JSX.Element => {
           body: JSON.stringify({ userLogin, userPassword }),
         })
       )
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('accesstoken', user.accessToken)
+        window.location.replace('/')
+      }
       setInvalid(true)
     } catch (err: any) {
       setInvalid(true)
@@ -35,7 +39,10 @@ const Login = (): JSX.Element => {
     <>
       <Head>
         <title>เข้าสู่ระบบ - สถาบันศุภปัญญาไอ.เค.</title>
-        <meta property="og:title" content="เข้าสู่ระบบ - สถาบันศุภปัญญาไอ.เค." />
+        <meta
+          property="og:title"
+          content="เข้าสู่ระบบ - สถาบันศุภปัญญาไอ.เค."
+        />
       </Head>
       <section className="section">
         <div className="container">
