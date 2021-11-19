@@ -30,9 +30,9 @@ const Login = (): JSX.Element => {
         window.localStorage.setItem('accesstoken', user.accessToken)
         setTimeout(() => {
           window.location.replace('/')
-        }, 500)
+        }, 1000)
       }
-      setInvalid(true)
+      !user.isLoggedIn && setInvalid(true)
     } catch (err: any) {
       setInvalid(true)
       console.error('Request Failed: ' + err.data.message)
