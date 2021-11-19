@@ -2,8 +2,15 @@ import { useEffect } from 'react'
 import Router from 'next/router'
 import useSWR from 'swr'
 
-const useUser = ({ redirectTo = '', redirectIfFound = false, preventRedirect = false } = {}) => {
-  const { data: user, mutate: mutateUser } = useSWR('/api/islogin', { refreshInterval: 10000 })
+const useUser = ({
+  redirectTo = '',
+  redirectIfFound = false,
+  preventRedirect = false,
+} = {}) => {
+  const { data: user, mutate: mutateUser } = useSWR(
+    '/api/islogin?_vercel_no_cache=1',
+    { refreshInterval: 10000 }
+  )
 
   useEffect(() => {
     let useRedirect: boolean = false
@@ -16,7 +23,10 @@ const useUser = ({ redirectTo = '', redirectIfFound = false, preventRedirect = f
     if (!useRedirect || !user) return
     if (
       // If redirectTo is set, redirect if the user was not found.
-      (useRedirect && !redirectIfFound && !user.isLoggedIn && !preventRedirect) ||
+      (useRedirect &&
+        !redirectIfFound &&
+        !user.isLoggedIn &&
+        !preventRedirect) ||
       // If redirectIfFound is also set, redirect if the user was found
       (redirectIfFound && user.isLoggedIn)
     ) {
