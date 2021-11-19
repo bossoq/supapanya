@@ -21,5 +21,6 @@ export const setCookie = (
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With,content-type,set-cookie')
   res.setHeader('Access-Control-Allow-Credentials', 'true')
+  res.setHeader('Cache-Control', 'no-cache')
   res.setHeader('Set-Cookie', serialize(name, String(stringValue), options))
 }
