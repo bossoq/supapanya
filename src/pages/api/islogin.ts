@@ -11,14 +11,14 @@ const islogin = (req: NextApiRequest, res: NextApiResponse<any>) => {
       path: '/',
       maxAge: 86400000,
     })
-    res.status(202).json({ isLoggedIn: true, ...decryptData })
+    res.status(200).json({ isLoggedIn: true, ...decryptData })
   } catch (err: any) {
     console.error('isLogin: ' + err.message)
 
     setCookie(res, 'accesstoken', '', {
       path: '/',
     })
-    res.status(202).json({ isLoggedIn: false })
+    res.status(200).json({ isLoggedIn: false })
   }
 }
 

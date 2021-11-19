@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import Router from 'next/router'
+import axios from 'axios'
 import useSWR from 'swr'
 
 const useUser = ({
@@ -7,8 +8,14 @@ const useUser = ({
   redirectIfFound = false,
   preventRedirect = false,
 } = {}) => {
+  const fetcher = (url: string, token: string) =>
+    axios
+      .get(url, { headers: { Authorization: `Bearer ${token}` } })
+      .then((res) => res.data)
+
   const { data: user, mutate: mutateUser } = useSWR(
-    '/api/islogin?_vercel_no_cache=1',
+    ['/api/islogin?_vercel_no_cache=1', 'dummytoken'],
+    fetcher,
     { refreshInterval: 10000 }
   )
 
