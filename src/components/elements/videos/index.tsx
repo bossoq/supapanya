@@ -108,7 +108,7 @@ const VideoJSElement = ({
         setVideoJSOptions({ ...videoJSOptionsDefault, ...videoSourceLists[0] })
         setFileType('MP4')
       } else {
-        setVideoSourceHLS(videoSourceLists[0].sources)
+        setVideoSourceHLS(videoSourceLists[0].source)
         setFileType('HLS')
       }
     }
