@@ -28,7 +28,11 @@ const JitsiLive = () => {
     fetchJson('https://meet.supapanya.com/nbConfPart', {
       method: 'GET',
     }).then((response: { [k: string]: any}) => {
-      setRoomNames(Object.keys(response))
+      setRoomNames(
+        response.room_census.map((room_data: { [k: string]: any }) => {
+          return room_data.room_name.split('@')[0]
+        })
+      )
     })
   }, [userData]);
 
